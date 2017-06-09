@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+  <%= user.first_name + ' ' + user.last_name %><br>
+  <%= user.party_affiliation %><br>
+  <%= user.city %><br>
+  <%= user.state %><br>
+  <%= user.zip %><br><br><br>
+<% end %>

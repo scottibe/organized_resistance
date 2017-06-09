@@ -1,28 +1,87 @@
-== README
+# ORGANIZED-RESISTANCE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A planning and communications tool for the purpose of organizing and mobilizing local grass-roots campaigns in opposition to President Trump's and the Republican agenda. Organize get-togethers, rallies, protests, fund-raisers. Write and share opinion pieces about resistance topics and comment on others. Share news articles with other members
 
-Things you may want to cover:
+USER LOGIN & ROLES
 
-* Ruby version
+A user can create an account - this requires a first_name, last_name, username, city, state, zip, email & password - upon completion they are setup with a session to log them in
 
-* System dependencies
+A user can login - this requires a username & password - upon completion they are setup with a session to log them in
 
-* Configuration
+A user can logout - This will clear out the logged in session
 
-* Database creation
+Roles?? - Upon creation of an account: - A user will have an access level of 0 - Which allows them to do basic functionality in the application - .ie (create posts, create events, edit their own posts, edit their own events,  and delete their own posts and events)
 
-* Database initialization
+ -Role 0(basic) - can read everything. Can create events and posts. 
 
-* How to run the test suite
+ -Role 1(modertaor) - can edit and delete their posts and events that they themselves created. They can also edit or delete comments on posts and events they themselves created.
 
-* Services (job queues, cache servers, search engines, etc.)
+MODELS
 
-* Deployment instructions
+User
+has_many :posts, foreign_key: 'author_id'
+has_many :events, foreign_key: 'creator_id'
+has_many :comments
 
-* ...
+Post
+has_many :comments
+has_many :users, through: :comments
+belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+
+Comments
+belongs_to :post
+belongs_to :user
+
+Events
+belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
+has_many :news_articles
+
+NewsArticles
+belongs_to :event
+
+Event attributes
+-subject(i.e. trump taxes, paris, health care)
+-description short written description of why you are crating the event and creator hopes to accomplish
+-number_of_attendees - number of attendess desired
+-recurring?
+-date
+-time
+-location
+
+User Attributes
+name
+email
+password
+password_confirmation
+city
+state
+zip
+party affiliation - drop down -  which best describes you: democrat, independent, libertarian, liberal, socialist, fuck trump, fuck trump hard, fuck republcians, fuck republicans really hard 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+A creator creates an event. The event is added to page displaying every event that has been created. An event link with relevant details is emailed to everyone in the state in which the event will be held.
+
+Users can share links to news articles on the event page pertaining to the event's topic. - nested routes of Event Model
+
+Users can go to the event page to find more details and sign up for that event
+
+Users can write posts on resistance topics and they will be linked to from that users show page and the posts will be searchable by topic and date
+
+Users can comment on the posts. Nested routes of Post model
+
+Users who created the post or the event can edit or delete the post or event
+
+will use omniauth to sign in and sign up
+will use devise or roll my own to signin and sign up
+
+will use bootstrap gem
+
+
+
+
+
+
+
+
+
+
