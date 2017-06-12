@@ -2,13 +2,15 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
+  
+  get '/auth/facebook/callback' => 'sessions#create'
+  get 'auth/failure' => redirect('/')
+  get 'signout' => 'sessions#destroy'
 
   get '/signup' => 'users#new', as: '/signup'
   get 'login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  get 'logout' => 'sessions#destroy', as: 'signout'
+  
 
   resources :users, except: [:new]
   resources :welcome, only: [:home, :show]

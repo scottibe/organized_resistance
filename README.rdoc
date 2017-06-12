@@ -78,10 +78,17 @@ will use bootstrap gem
 
 
 
+User flow
+  -User creates account - directed to root welcome#home page
+  -welcome page has links to all events, posts and news articles as well as a link 
+  user show page, link is called 'create event or post'
+  -user show page - can create events post or place news article
 
+  -When user login - directs to user show page that has everything above but also anything the user has created
 
+  root_path - welcome page will allow non-users to view all events and read news articles, but will have to sign  up for an account to create events and posts and post news articles 
 
-
+Monday - build events model - create, edit, update destroy event. build associations with user
 
 
 
