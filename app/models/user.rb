@@ -1,8 +1,9 @@
 class User < ApplicationRecord
 
-  # has_many :posts, foreign_key: 'author_id'
-  # has_many :events, foreign_key: 'creator_id'
-  # has_many :comments
+  has_many :posts
+  has_many :events, foreign_key: 'creator_id'
+  has_many :comments
+  has_many :news_articles
 
   before_save {self.email = email.downcase }
 

@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       else 
         user = User.create(email: oauth_email)
         session[:user_id] = user.id
+        raise 'help'.inspect
         redirect_to user_path(user)
       end     
     else        
