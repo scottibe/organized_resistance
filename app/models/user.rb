@@ -2,6 +2,9 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :events, foreign_key: 'creator_id'
+  has_many :attendee_events, foreign_key: 'attendee_id'
+  has_many :attending_events, through: :attendee_events, source: :event
+  has_many :created_events, foreign_key: 'creator_id', source: :event
   has_many :comments
   has_many :news_articles
 
@@ -19,7 +22,7 @@ class User < ApplicationRecord
   has_secure_password(validations: false)
 
   def self.party
-    party = ['democrat', 'independent', 'libertarian', 'liberal', 'socialist', 'fuck trump', 'fuck trump hard', 'fuck republcians', 'fuck republicans really hard']
+    party = ['democrat', 'independent', 'libertarian', 'liberal', 'socialist']
   end 
 
 end    
