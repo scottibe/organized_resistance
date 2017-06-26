@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20170617191552) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "creator_id"
-    t.integer  "attendee_id"
     t.string   "title"
     t.string   "subject"
     t.text     "description"

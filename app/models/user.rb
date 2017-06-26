@@ -2,8 +2,8 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :events, foreign_key: 'creator_id'
-  has_many :attendee_events, foreign_key: 'attendee_id'
-  has_many :attending_events, through: :attendee_events, source: :event
+  has_many :event_attendees, foreign_key: 'attendee_id'
+  has_many :attending_events, through: :event_attendees, source: :event
   has_many :created_events, foreign_key: 'creator_id', source: :event
   has_many :comments
   has_many :news_articles
@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true  
 
-  # validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }
 
 
   has_secure_password(validations: false)
