@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         redirect_to user_path(user)
       else 
         user = User.new(email: oauth_email, name: oauth_name, password: oauth_pass)
-        user.save!
+        user.save
         session[:user_id] = user.id
         redirect_to user_path(user)
       end     

@@ -1,0 +1,43 @@
+<h2>Create Your Own Event</h2>
+<%= form_for(events) do |f| %>
+
+<div class="container">
+
+  <form>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>  
+
+    <div class="form-group">
+      <%= f.label :subject %>
+      <%= f.text_field :subject, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :date_of_event %>
+      <%= f.date_field :date, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :time %>
+      <%= f.time_field :time, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :location %>
+      <%= f.text_field :location, class: "form-control" %>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Submit</button> 
+  </form>  
+</div>  
+<% end %>
+
+<%= link_to "Sign in with Facebook", "/auth/facebook" %>
+

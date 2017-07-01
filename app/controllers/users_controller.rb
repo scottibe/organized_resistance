@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 private 
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_digest, :city, :state, :zip, :party_affiliation, :provider, :uid, :oauth_token, :oauth_expires_at)
+    params.require(:user).permit(event_ids: [], :name, :email, :password, :password_digest, :password_confirmation, :city, :state, :zip, :party_affiliation)
   end  
 
 end
