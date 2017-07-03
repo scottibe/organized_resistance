@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :require_login  #,  except: [:index]
  
   def index
     @events = Event.all
@@ -19,8 +20,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    #@creator = User.find(session[:user_id])
-    #raise "createor".inspect  
+    
   end
 
   def update
@@ -36,6 +36,10 @@ private
 
   def event_params
     params.require(:event).permit(:title, :subject, :description, :date, :time, :location, :creator_id)
+  end  
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end  
 
 end

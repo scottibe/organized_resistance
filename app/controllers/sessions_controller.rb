@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       oauth_pass = auth["credentials"]["token"]
       if user = User.find_by(email: oauth_email)
         session[:user_id] = user.id 
-        redirect_to user_path(user)
+        redirect_to user_info_path
       else 
         user = User.new(email: oauth_email, name: oauth_name, password: oauth_pass)
         user.save

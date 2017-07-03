@@ -2,6 +2,7 @@
   <% @events.each do |event| %>
     <li><%= event.title %></li> 
     <li><%= event.date %></li>
-    <li><%= event.description %></li><br><br>
+    <li><%= event.description %></li>
+    <%= button_to 'Attend This Event', event_attendees_path(event_id: event) %>
   <% end %>  
 </ul>  

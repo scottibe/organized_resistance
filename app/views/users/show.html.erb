@@ -1,13 +1,27 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <% if current_user.id == @user.id %>
-  <%= @user.name %>
-  <%= @user.party_affiliation %>
+<ul>
+  <li>Name: <%= @user.name %></li>
+  <li>Party Affiliation: <%= @user.party_affiliation %></li>
+  <li>City: <%= @user.city %></li> 
+  <li>State: <%= @user.state %></li>
+  <li>Zip: <%= @user.zip %></li> 
+  
+  <p>Events You have signed up for:</p>
+  <ul>
+    <% @user.attending_events.each do |event| %>
+      <li><%= event.title %></li>
+    <% end %>  
+  </ul>  
+  Events near you:
+  <%=  %>
   <%= link_to "Sign out", signout_path %>
 <% else %>  
   You are not authorized to view this page
 <% end %>
+</ul>
 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %><br><br>
+  
+
   

@@ -1,0 +1,45 @@
+<h3>Please provide location information</h3>
+<%= form_for @user, url: { action: :location_info, method: :patch } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>  
+    </div>
+  <% end %>  
+
+<div class="container">
+
+  <form>
+    <div class="form-group">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :state %>
+      <%= f.text_field :state, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :zip %>
+      <%= f.text_field :zip, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :party_affiliation %>
+      <%= f.select :party_affiliation, User.party, class: "form-control" %>
+    </div>
+  
+    <%= button_to "Submit", user_info_path(current_user), method: :patch %>
+
+    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+
+  </form>   
+<% end %>  
+</div>  
+
