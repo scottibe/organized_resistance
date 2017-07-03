@@ -27,6 +27,6 @@ end
     description: Faker::Lorem.paragraph,
     date: Faker::Date.forward(30),
     time: Faker::Number.between(1, 12),
-    location: Faker::StarWars.planet
+    location_name: Faker::StarWars.planet
     )
 end 

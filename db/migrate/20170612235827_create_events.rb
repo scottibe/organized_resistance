@@ -7,7 +7,11 @@ class CreateEvents < ActiveRecord::Migration
       t.text :description
       t.date :date
       t.time :time
-      t.string :location
+      t.string :location_name
+      t.string :street_address
+      t.string :city 
+      t.string :state 
+      t.integer :zip
 
       t.timestamps null: false
     end

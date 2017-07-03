@@ -27,9 +27,13 @@ ActiveRecord::Schema.define(version: 20170617191552) do
     t.text     "description"
     t.date     "date"
     t.time     "time"
-    t.string   "location"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "location_name"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
