@@ -40,8 +40,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @events = Event.where()
-
+    @events = Event.where("state = ?", @user.state)
   end  
 
   def edit

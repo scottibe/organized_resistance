@@ -14,9 +14,15 @@
       <li><%= event.title %></li>
     <% end %>  
   </ul>  
-  Events near you:
-  <%=  %>
-  <%= link_to "Sign out", signout_path %>
+  Events in your state:
+  <ul>
+    <% @events.each do |event| %>
+      <li><%= link_to event.title, event_path(event) %></li>
+    <% end %><br>
+  
+<%= link_to "Sign out", signout_path %>
+
+
 <% else %>  
   You are not authorized to view this page
 <% end %>

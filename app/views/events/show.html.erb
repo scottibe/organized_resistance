@@ -4,8 +4,14 @@
   <li><%= @event.creator.name %></li> 
   <li><%= @event.subject %></li> 
   <li><%= @event.description %></li> 
-  <li><%= @event.location %></li>
+  <li><%= @event.location_name %></li>
+  <li><%= @event.street_address %></li>
+  <li><%= @event.city %></li> 
+  <li><%= @event.state %></li>
+  <li><%= @event.zip %></li>
 </ul>  
+
+<%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %>
 
 
 
