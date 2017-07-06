@@ -1,17 +1,26 @@
 <h1>Events</h1>
 <ul>
-  <li><%= @event.title %></li> 
-  <li><%= @event.creator.name %></li> 
-  <li><%= @event.subject %></li> 
-  <li><%= @event.description %></li> 
-  <li><%= @event.location_name %></li>
-  <li><%= @event.street_address %></li>
-  <li><%= @event.city %></li> 
-  <li><%= @event.state %></li>
-  <li><%= @event.zip %></li>
+  <li><b>Title:</b>  <%= @event.title %></li> 
+  <li><b>Creator:</b>  <%= @event.creator.name %></li>   
+  <li><b>Description:</b>  <%= @event.description %></li> 
+  <li><b>Location </b>  <%= @event.location_name %></li>
+  <li><b>Address:</b>  <%= @event.street_address %></li>
+  <li><b>City:</b>  <%= @event.city %></li> 
+  <li><b>State:</b>  <%= @event.state %></li>
+  <li><b>Zip:</b>  <%= @event.zip %></li>
+<h3>Topics of the Event</h3>
+  <% @topics.each do |topic| %>
+    <li><%= topic.name %></li>
+  <% end %>
 </ul>  
 
-<%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %>
+<%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %><br>
+
+<% if current_user.id == @event.creator.id %>
+  <%= link_to "Edit event details", edit_event_path(@event, Statement.new) %><br>
+  
+
+<% end %><br>
 
 
 

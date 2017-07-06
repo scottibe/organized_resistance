@@ -1,6 +1,6 @@
 <ul>
   <% @events.each do |event| %>
-    <li><%= event.title %></li> 
+    <li><%= link_to event.title, event_path(event) %></li> 
     <li><%= event.date %></li>
     <li><%= event.description %></li>
     <%= button_to 'Attend This Event', event_attendees_path(event_id: event) %>

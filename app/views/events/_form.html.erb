@@ -1,5 +1,4 @@
-<h2>Create Your Own Event</h2>
-<%= form_for(events) do |f| %>
+<%= form_for(event) do |f| %>
 
 <div class="container">
 
@@ -10,9 +9,13 @@
     </div>  
 
     <div class="form-group">
-      <%= f.label :subject %>
-      <%= f.text_field :subject, class: "form-control" %>
-    </div>
+      <%= f.fields_for(:topics) do |topic_form| %>
+        <%= topic_form.label :topic_name %>
+        <%= topic_form.text_field :name, class: "form_control" %>
+      <% end %>  
+    </div>  
+
+      <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %><br>
 
     <div class="form-group">
       <%= f.label :description %>

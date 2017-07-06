@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  # get 'events/new'
-
-  # get 'events/create'
-
-  # get 'events/show'
-
-  # get 'events/update'
-
-  # get 'events/edit'
-
-  # get 'events/destroy'
-
   root 'welcome#home'
 
   resources :event_attendees, only: [:new, :create]
@@ -26,18 +14,15 @@ Rails.application.routes.draw do
   
 
   resources :users, except: [:new]
-  #   member do
-  #     patch :location_info
-  #     put :location_info
-  #   end 
-  # end    
+    
   get '/user/info' => 'users#info'
   patch '/user/info' => 'users#location_info'
   resources :welcome, only: [:home, :show]
 
-  resources :events do 
-    resources :news_articles
-  end  
+  resources :events
+  
+  resources :statements
+  
 
 end
 
