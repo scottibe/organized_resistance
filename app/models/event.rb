@@ -3,18 +3,24 @@ class Event < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
   has_many :event_attendees
   has_many :attendees, through: :event_attendees
-  has_many :topics
   has_one :statement
 
-  accepts_nested_attributes_for :topics, :statement, reject_if: lambda { |attributes| attributes['name'].blanks? }
+  validates_presence_of :description, :date, :time, :street_address, :city, :state, :zip, :topic
 
-  validates_presence_of :description, :date, :time, :street_address, :city, :state, :zip
+  def self.past_events
+    self.where("date < ?", Time.now.beginning_of_day)
+  end  
 
-  def topics_attributes=(topic_hash)
-    topic_hash.values.each do |topic_attributes|
-        self.topics.build(topic_attributes)
-      end  
-    end   
-  end      
+  def self.future_events
+    self.where("date > ?", Time.now.beginning_of_day)
+  end   
+
+  def self.in_state_events
+    self.where("state = ?", User.current.state)
+  end
+
+  def attending?
+    User.current.attending_events.include?(self)
+  end   
 
 end

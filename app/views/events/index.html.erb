@@ -1,8 +1,20 @@
+<h2>Future Events</h2>
 <ul>
-  <% @events.each do |event| %>
-    <li><%= link_to event.title, event_path(event) %></li> 
-    <li><%= event.date %></li>
-    <li><%= event.description %></li>
-    <%= button_to 'Attend This Event', event_attendees_path(event_id: event) %>
+  <% @future_events.each do |event| %>
+    <li>Title: <%= link_to event.title, event_path(event) %></li> 
+    <li>Date: <%= event.date %></li>
+    <li>Description <%= event.description %></li>
+    <li>Creator: <%= event.creator.name %></li><br>
+    <%= button_to 'Attend This Event', event_attendees_path(event_id: event) %><br>
   <% end %>  
 </ul>  
+
+<h2>Past Events</h2>
+<ul>
+  <% @past_events.each do |event| %>
+    <li>Title <%= link_to event.title, event_path(event) %></li> 
+    <li>Date: <%= event.date %></li>
+    <li>Description <%= event.description %></li>
+    <li>Creator: <%= event.creator.name %></li>
+  <% end %>  
+</ul>

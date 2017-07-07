@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  before_filter :set_current_user
 
 
   def current_user
@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     redirect_to root_path if !logged_in?
+  end   
+
+  def set_current_user
+    User.current = current_user
   end   
 
   helper_method :current_user, :logged_in?

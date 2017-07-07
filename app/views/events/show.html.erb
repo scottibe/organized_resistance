@@ -1,26 +1,28 @@
-<h1>Events</h1>
+<h1>Event</h1>
 <ul>
   <li><b>Title:</b>  <%= @event.title %></li> 
   <li><b>Creator:</b>  <%= @event.creator.name %></li>   
   <li><b>Description:</b>  <%= @event.description %></li> 
+  <li><b>Topic:</b>  <%= @event.topic %></li>
   <li><b>Location </b>  <%= @event.location_name %></li>
   <li><b>Address:</b>  <%= @event.street_address %></li>
   <li><b>City:</b>  <%= @event.city %></li> 
   <li><b>State:</b>  <%= @event.state %></li>
-  <li><b>Zip:</b>  <%= @event.zip %></li>
-<h3>Topics of the Event</h3>
-  <% @topics.each do |topic| %>
-    <li><%= topic.name %></li>
+  <li><b>Zip:</b>  <%= @event.zip %></li><br>  
+
+
+  <% if current_user.id == @event.creator.id %>
+    <%= link_to "Edit event details", edit_event_path(@event) %><br>  
+  <% else %>
+    <%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %><br>
+  <% end %><br>
+
+  <% if @event.attending? %>
+    <p>You have signed up for this event</p> 
   <% end %>
-</ul>  
 
-<%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %><br>
 
-<% if current_user.id == @event.creator.id %>
-  <%= link_to "Edit event details", edit_event_path(@event, Statement.new) %><br>
-  
 
-<% end %><br>
 
 
 

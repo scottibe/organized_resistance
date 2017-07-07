@@ -7,13 +7,21 @@
   <li>City: <%= @user.city %></li> 
   <li>State: <%= @user.state %></li>
   <li>Zip: <%= @user.zip %></li> 
+</ul>  
   
   <p>Events You have signed up for:</p>
   <ul>
-    <% @user.attending_events.each do |event| %>
-      <li><%= event.title %></li>
+    <% @user.attending_events.uniq.each do |event| %>
+      <li><%= link_to event.title, event_path(event) %></li>
     <% end %>  
   </ul>  
+  <p>Events you have created</p> 
+  <ul>
+    <% @user.created_events.each do |e| %>
+      <li><%= link_to e.title, event_path(e) %></li>
+    <% end %>  
+  </ul>  
+
   Events in your state:
   <ul>
     <% @events.each do |event| %>
@@ -26,7 +34,7 @@
 <% else %>  
   You are not authorized to view this page
 <% end %>
-</ul>
+
 
   
 

@@ -6,20 +6,16 @@
     <div class="form-group">
       <%= f.label :title %>
       <%= f.text_field :title, class: "form-control" %>
-    </div>  
-
-    <div class="form-group">
-      <%= f.fields_for(:topics) do |topic_form| %>
-        <%= topic_form.label :topic_name %>
-        <%= topic_form.text_field :name, class: "form_control" %>
-      <% end %>  
-    </div>  
-
-      <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %><br>
+    </div>   
 
     <div class="form-group">
       <%= f.label :description %>
       <%= f.text_area :description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :topic %>
+      <%= f.text_field :topic, class: "form-control" %>
     </div>
 
     <div class="form-group">
@@ -62,5 +58,5 @@
 </div>  
 <% end %>
 
-<%= link_to "Sign in with Facebook", "/auth/facebook" %>
+
 

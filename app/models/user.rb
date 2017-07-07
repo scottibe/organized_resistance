@@ -1,12 +1,12 @@
 class User < ApplicationRecord
 
   has_many :posts
-  #has_many :events, foreign_key: 'creator_id'
   has_many :event_attendees, foreign_key: 'attendee_id'
   has_many :attending_events, through: :event_attendees, source: :event
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
   has_many :comments
   has_many :news_articles
+  has_many :statements 
 
   before_save {self.email = email.downcase }
 
@@ -19,7 +19,7 @@ class User < ApplicationRecord
   #validates :password, length: { minimum: 6 }
 
 
-  has_secure_password(validations: false)
+  has_secure_password #(validations: false)
 
   def self.party
     party = ['democrat', 'independent', 'libertarian', 'liberal', 'socialist']
@@ -27,6 +27,14 @@ class User < ApplicationRecord
 
   def logged_in?
     session[:user_id] != nil
+  end  
+
+  def self.current # or user Events.where("state = ?", current_user.state)
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
   end  
 
 end    

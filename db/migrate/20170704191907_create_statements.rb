@@ -3,7 +3,7 @@ class CreateStatements < ActiveRecord::Migration
     create_table :statements do |t|
       t.string :content
       t.string :headline
-      t.integer :event_id
+      t.integer :user_id
 
       t.timestamps null: false
     end

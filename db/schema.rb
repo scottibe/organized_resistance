@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170704191907) do
   create_table "events", force: :cascade do |t|
     t.integer  "creator_id"
     t.string   "title"
-    t.string   "subject"
+    t.string   "topic"
     t.text     "description"
     t.date     "date"
     t.time     "time"
@@ -39,14 +39,7 @@ ActiveRecord::Schema.define(version: 20170704191907) do
   create_table "statements", force: :cascade do |t|
     t.string   "content"
     t.string   "headline"
-    t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "topics", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "event_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

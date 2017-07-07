@@ -1,13 +1,14 @@
 class EventsController < ApplicationController
+  include EventsHelper
   before_action :require_login  #,  except: [:index]
  
   def index
-    @events = Event.all
+    @past_events = Event.past_events
+    @future_events = Event.future_events
   end  
 
   def new
-    @event = Event.new
-    @topics = @event.topics.build 
+    @event = Event.new 
   end
 
   def create
@@ -18,13 +19,15 @@ class EventsController < ApplicationController
       render 'new'
     end    
   end
-                  # FIX topic can't just choose topic, need to enter one in text box
+    
   def show
     # if params[:statement_id]
     #   @statement = Statement.find_by(id: params[:id])
     # end  
     @event = Event.find(params[:id])
-    @topics = @event.topics
+    #@created_events = @event.creator.created_events
+    @attending = current_user.attending_events
+
   end
 
   def update
@@ -46,7 +49,7 @@ class EventsController < ApplicationController
 private 
 
   def event_params
-    params.require(:event).permit(:title, :street_address, :location_name, :zip, :city, :state, :title, :description, :date, :time, :creator_id, topic_ids: [], topics_attributes: [:name])
+    params.require(:event).permit(:title, :street_address, :location_name, :zip, :city, :state, :title, :topic, :description, :date, :time, :creator_id)
   end  
 
   def require_login

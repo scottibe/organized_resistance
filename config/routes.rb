@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   patch '/user/info' => 'users#location_info'
   resources :welcome, only: [:home, :show]
 
-  resources :events
-  
-  resources :statements
+  resources :events 
+      resources :statements
+ 
   
 
 end

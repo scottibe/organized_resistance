@@ -23,7 +23,7 @@ end
 50.times do 
   Event.create(
     title: Faker::StarWars.character,
-    subject: Faker::Music.instrument,
+    topic: Faker::Music.instrument,
     description: Faker::Lorem.paragraph,
     date: Faker::Date.forward(30),
     time: Faker::Number.between(1, 12),

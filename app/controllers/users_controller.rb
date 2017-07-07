@@ -40,7 +40,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = Event.where("state = ?", @user.state)
+    @events = Event.in_state_events
+    @created_events = @user.created_events
   end  
 
   def edit
