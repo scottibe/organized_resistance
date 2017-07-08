@@ -20,7 +20,13 @@ Rails.application.routes.draw do
   resources :welcome, only: [:home, :show]
 
   resources :events 
-      resources :statements
+  
+  resources :statements
+
+  resources :topics
+
+  resources :comments
+  
  
   
 

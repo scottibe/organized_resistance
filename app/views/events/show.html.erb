@@ -3,12 +3,12 @@
   <li><b>Title:</b>  <%= @event.title %></li> 
   <li><b>Creator:</b>  <%= @event.creator.name %></li>   
   <li><b>Description:</b>  <%= @event.description %></li> 
-  <li><b>Topic:</b>  <%= @event.topic %></li>
   <li><b>Location </b>  <%= @event.location_name %></li>
   <li><b>Address:</b>  <%= @event.street_address %></li>
   <li><b>City:</b>  <%= @event.city %></li> 
   <li><b>State:</b>  <%= @event.state %></li>
-  <li><b>Zip:</b>  <%= @event.zip %></li><br>  
+  <li><b>Zip:</b>  <%= @event.zip %></li>  
+  <li><b>Attendees:</b> <%= @event.attendees.count %></li><br>
 
 
   <% if current_user.id == @event.creator.id %>

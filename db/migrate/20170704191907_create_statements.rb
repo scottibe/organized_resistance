@@ -4,6 +4,7 @@ class CreateStatements < ActiveRecord::Migration
       t.string :content
       t.string :headline
       t.integer :user_id
+      t.integer :event_id
 
       t.timestamps null: false
     end
