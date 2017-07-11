@@ -27,6 +27,14 @@
     <% @events.each do |event| %>
       <li><%= link_to event.title, event_path(event) %></li>
     <% end %><br>
+  </ul>
+  
+  Your Statements:
+  <ul>
+    <% @user.statements.each do |statement| %>
+      <%= link_to statement.headline, user_statement_path(@user, statement) %>
+    <% end %>  
+  </ul>  
   
 <%= link_to "Sign out", signout_path %>
 

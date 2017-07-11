@@ -1,0 +1,7 @@
+<h1>Statements</h1>
+<ul>
+  <% @statements.each do |statement| %>
+    <li>Author: <%= display_user(statement) %></li>
+    <li><%= link_to statement.headline, statement_path(statement) %></li>
+  <% end %>  
+</ul>

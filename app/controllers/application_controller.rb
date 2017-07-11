@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
 
 
+
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end  
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
     User.current = current_user
   end   
 
-  helper_method :current_user, :logged_in?
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
+  end
+
+  helper_method :current_user, :logged_in?, :require_login
 
 end

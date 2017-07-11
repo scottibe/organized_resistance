@@ -1,36 +1,64 @@
 class StatementsController < ApplicationController
+  # before_action :require_login
+
+  def index
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      if @user.nil?
+        redirect_to users_path, alert: "Author not found"
+      else 
+        @statements = @user.statements
+      end     
+    else 
+      @statements = Statement.all
+    end    
+  end  
 
   def new
    @statement = Statement.new
-   @event = Event.find(params[:event_id])
   end
   
   def create 
-    @event = Event.find(params[:event_id])
-    @event.statement = Statement.new(statement_params)
-    if @event.statement.save
-      redirect_to event_path(@event)
+    @statement = Statement.new(statement_params)
+    @statement.user = current_user
+    if @statement.save
+      redirect_to statement_path(@statement)
     else 
       render "new"
     end    
   end 
 
   def show
-    @statement = Statement.find(params[:id])
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @statement = @user.statements.find_by(id: params[:id])
+      if @statement.nil?
+        redirect_to user_statements_path(@user), alert: "Statement not found"
+      end 
+    else 
+      @statement = Statement.find(params[:id])     
+    end  
   end  
 
   def edit 
-
+    @statement = Statement.find(params[:id]) 
   end 
 
   def update 
-
+    @statement = Statement.find(params[:id])
+    if @statement.update(statement_params) 
+      redirect_to statement_path(@statement)
+    else 
+      render 'edit'  
+    end
   end  
 
 private 
 
   def statement_params
-    params.require(:statement).permit(:content, :headline, :event_id)
+    params.require(:statement).permit(:content, :headline, :event_id, :user_name)
   end  
+
+
 
 end

@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   
 
-  resources :users, except: [:new]
+  resources :users do 
+    resources :statements, only: [:show, :index]
+  end  
     
   get '/user/info' => 'users#info'
   patch '/user/info' => 'users#location_info'

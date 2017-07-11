@@ -41,7 +41,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = Event.in_state_events
-    @created_events = @user.created_events
   end  
 
   def edit
@@ -67,7 +66,7 @@ class UsersController < ApplicationController
 private 
 
   def user_params
-    params.require(:user).permit(:event_id, :name, :email, :password, :password_confirmation, :city, :state, :zip, :party_affiliation)
+    params.require(:user).permit(:event_id, :name, :email, :password, :password_confirmation, :city, :state, :zip, :party_affiliation, :statement_id)
   end  
 
   def location_params

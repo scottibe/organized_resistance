@@ -1,2 +1,5 @@
-<%= @statement.headline %><br>
-<%= @statement.content %>
+<%= @statement.headline%><br>
+by: <%= display_user(@statement) %><br>
+<%= @statement.content %><br>
+
+<%= link_to "All Statements", statements_path %>

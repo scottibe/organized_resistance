@@ -1,0 +1,12 @@
+<%= form_for [@event, @statement] do |f| %>
+  <%= f.label :headline %>
+  <%= f.text_field :headline %>
+
+  <%= f.hidden_field :event_id %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.submit %>
+
+<% end %> 

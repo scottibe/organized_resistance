@@ -1,12 +1,11 @@
 class User < ApplicationRecord
 
-  has_many :posts
   has_many :event_attendees, foreign_key: 'attendee_id'
   has_many :attending_events, through: :event_attendees, source: :event
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
   has_many :comments
   has_many :news_articles
-  has_many :statements 
+  has_many :statements
 
   before_save {self.email = email.downcase }
 
@@ -15,9 +14,6 @@ class User < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX }
 
   validates :email, uniqueness: true  
-
-  #validates :password, length: { minimum: 6 }
-
 
   has_secure_password #(validations: false)
 
@@ -29,7 +25,7 @@ class User < ApplicationRecord
     session[:user_id] != nil
   end  
 
-  def self.current # or user Events.where("state = ?", current_user.state)
+  def self.current 
     Thread.current[:user]
   end
 

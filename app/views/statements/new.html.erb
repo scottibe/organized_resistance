@@ -1,12 +1,6 @@
-<%= form_for [@event, @statement] do |f| %>
-  <%= f.label :headline %>
-  <%= f.text_field :headline %>
-
-  <%= f.hidden_field :event_id %>
-
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-
-  <%= f.submit %>
-
+<% if logged_in? %>
+  <h1>Write Your Statement</h1>
+  <%= render partial: "form", locals: { event: @event } %>
+<% else %>  
+  Must be signed in to view this page
 <% end %>  
