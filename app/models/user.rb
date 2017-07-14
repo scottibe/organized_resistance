@@ -5,17 +5,17 @@ class User < ApplicationRecord
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
   has_many :comments
   has_many :news_articles
-  has_many :statements, through: :comments
+  has_many :statements
 
   before_save {self.email = email.downcase }
 
-  validates_presence_of :name, :email, :city, :state, :zip, :party_affiliation 
+  validates_presence_of :name, :email 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }
 
   validates :email, uniqueness: true  
 
-  has_secure_password #(validations: false)
+  has_secure_password 
 
   def self.party
     party = ['democrat', 'independent', 'libertarian', 'socialist', 'I Hate Republicans']

@@ -19,17 +19,19 @@ Rails.application.routes.draw do
     
   get '/user/info' => 'users#info'
   patch '/user/info' => 'users#location_info'
-  resources :welcome, only: [:home, :show]
+  resources :welcome, only: [:home]
 
-  resources :events 
+  resources :users do
+    resources :events, only: [:show, :index]
+  end  
   
   resources :statements
-
-  resources :topics
 
   resources :comments
 
   resources :categories
+
+  resources :events
   
  
   

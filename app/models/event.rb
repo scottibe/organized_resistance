@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 
   accepts_nested_attributes_for :statement
 
-  validates_presence_of :description, :date, :time, :street_address, :city, :state, :zip
+  validates_presence_of :description, :date, :time, :street_address, :city, :state
 
   def self.past_events
     self.where("date < ?", Time.now.beginning_of_day)

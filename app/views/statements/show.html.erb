@@ -14,7 +14,7 @@
             <p class="blog-post-meta"><%=@statement.created_at.strftime("%m-%d-%Y") %> by <%= display_user(@statement) %></p>
             <p><%= @statement.content %></p>
 
-          <% if current_user %>
+          <% if current_user == @user %>
             <%= link_to "Edit Statement", edit_statement_path(@statement) %><br>
           <% end %><br>
 
