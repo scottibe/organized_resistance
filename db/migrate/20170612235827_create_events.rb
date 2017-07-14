@@ -11,7 +11,6 @@ class CreateEvents < ActiveRecord::Migration
       t.string :street_address
       t.string :city 
       t.string :state 
-      t.integer :zip
 
       t.timestamps null: false
     end

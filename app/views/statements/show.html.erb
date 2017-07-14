@@ -1,5 +1,48 @@
-<%= @statement.headline%><br>
-by: <%= display_user(@statement) %><br>
-<%= @statement.content %><br>
+<div class="blog-header">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="blog-title">Resistance Statement</h1>
+    </div>
+  </div>
+</div>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="blog-post">
+            <h2 class="blog-post-title"><%= @statement.headline%></h2>
+            <p class="blog-post-meta"><%=@statement.created_at.strftime("%m-%d-%Y") %> by <%= display_user(@statement) %></p>
+            <p><%= @statement.content %></p>
+
+          <% if current_user %>
+            <%= link_to "Edit Statement", edit_statement_path(@statement) %><br>
+          <% end %><br>
+
+
+<p>Categories: <% @statement.categories.collect do |category| %>
+      <%= link_to category.name, category_path(category) %>
+<% end %></p>
+
+<%= form_for(@comment, html: {class: "form-horizontal", role: "form"}) do |f| %>
+  <%= f.hidden_field :statement_id, value: @statement.id %>
+
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= f.label :comment %>
+    </div>
+    
+    <div class="col-sm-8">
+      <%= f.text_area :content, rows: 3, class: "form-control", placeholder: "Please enter a comment", autofocus: true %>
+    </div>
+  </div>    
+  <p><%= f.submit %></p>
+<% end %>
+
+<ul class="comments">
+  <% @statement.comments.each do |comment| %>
+    <li><%= comment.user_name %> Says:</li>
+      <li><%= comment.content %></li><br>
+  <% end %>  
+</ul>
 
 <%= link_to "All Statements", statements_path %>

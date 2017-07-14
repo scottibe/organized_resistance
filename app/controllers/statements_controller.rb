@@ -32,11 +32,13 @@ class StatementsController < ApplicationController
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
       @statement = @user.statements.find_by(id: params[:id])
+      @comment = Comment.new(statement_id: params[:statement_id])
       if @statement.nil?
         redirect_to user_statements_path(@user), alert: "Statement not found"
       end 
     else 
       @statement = Statement.find(params[:id])     
+      @comment = Comment.new(statement_id: params[:statement_id])
     end  
   end  
 
@@ -56,7 +58,7 @@ class StatementsController < ApplicationController
 private 
 
   def statement_params
-    params.require(:statement).permit(:content, :headline, :event_id, :user_name)
+    params.require(:statement).permit(:content, :headline, :user_name, category_ids: [], categories_attributes: [:name])
   end  
 
 

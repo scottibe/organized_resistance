@@ -5,11 +5,11 @@ class User < ApplicationRecord
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
   has_many :comments
   has_many :news_articles
-  has_many :statements
+  has_many :statements, through: :comments
 
   before_save {self.email = email.downcase }
 
-  validates :name, :email, presence: true #:city, :state, :zip, :party_affiliation
+  validates_presence_of :name, :email, :city, :state, :zip, :party_affiliation 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }
 
@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_secure_password #(validations: false)
 
   def self.party
-    party = ['democrat', 'independent', 'libertarian', 'liberal', 'socialist']
+    party = ['democrat', 'independent', 'libertarian', 'socialist', 'I Hate Republicans']
   end 
 
   def logged_in?
@@ -31,6 +31,10 @@ class User < ApplicationRecord
 
   def self.current=(user)
     Thread.current[:user] = user
+  end  
+
+  def statement_count
+    self.statements.count
   end  
 
 end    

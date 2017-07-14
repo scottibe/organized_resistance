@@ -4,8 +4,7 @@
     <li>Title: <%= link_to event.title, event_path(event) %></li> 
     <li>Date: <%= event.date %></li>
     <li>Description <%= event.description %></li>
-    <%= binding.pry %>
-    <li>Creator: <%= event.creator.name %></li><br>
+    <li>Creator: <%= link_to event.creator.name, user_path(event.creator) %></li><br>
     <%= button_to 'Attend This Event', event_attendees_path(event_id: event) %><br>
   <% end %>  
 </ul>  

@@ -1,18 +1,17 @@
 <h1>Event</h1>
 <ul>
   <li><b>Title:</b>  <%= @event.title %></li> 
-  <li><b>Creator:</b>  <%= @event.creator.name %></li>   
+  <li><b>Creator:</b>  <%= link_to @event.creator.name, user_path(@event.creator) %></li>   
   <li><b>Description:</b>  <%= @event.description %></li> 
   <li><b>Location </b>  <%= @event.location_name %></li>
   <li><b>Address:</b>  <%= @event.street_address %></li>
   <li><b>City:</b>  <%= @event.city %></li> 
-  <li><b>State:</b>  <%= @event.state %></li>
-  <li><b>Zip:</b>  <%= @event.zip %></li>  
+  <li><b>State:</b>  <%= @event.state %></li>  
   <li><b>Attendees:</b> <%= @event.attendees.count %></li><br>
 
-
   <% if current_user.id == @event.creator.id %>
-    <%= link_to "Edit event details", edit_event_path(@event) %><br>  
+    <%= link_to "Edit event details", edit_event_path(@event) %><br> 
+    <%= link_to "Create Statement", new_statement_path %> 
   <% else %>
     <%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %><br>
   <% end %><br>

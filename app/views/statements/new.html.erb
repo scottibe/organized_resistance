@@ -1,6 +1,5 @@
 <% if logged_in? %>
-  <h1>Write Your Statement</h1>
-  <%= render partial: "form", locals: { event: @event } %>
+  <%= render partial: "form", statement: Statement.new, locals: { statement: @statement } %>
 <% else %>  
   Must be signed in to view this page
 <% end %>  

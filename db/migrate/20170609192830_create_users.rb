@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :event_id
       t.string :city
       t.string :state
-      t.integer :zip
       t.string :party_affiliation
       t.string :provider
       t.string :uid

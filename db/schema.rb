@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20170711213551) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "statement_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "event_attendees", force: :cascade do |t|
@@ -43,7 +45,6 @@ ActiveRecord::Schema.define(version: 20170711213551) do
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -71,7 +72,6 @@ ActiveRecord::Schema.define(version: 20170711213551) do
     t.integer  "event_id"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip"
     t.string   "party_affiliation"
     t.string   "provider"
     t.string   "uid"

@@ -5,7 +5,9 @@ class Event < ActiveRecord::Base
   has_many :attendees, through: :event_attendees
   has_one :statement 
 
-  #validates_presence_of :description, :date, :time, :street_address, :city, :state, :zip
+  accepts_nested_attributes_for :statement
+
+  validates_presence_of :description, :date, :time, :street_address, :city, :state, :zip
 
   def self.past_events
     self.where("date < ?", Time.now.beginning_of_day)
