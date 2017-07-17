@@ -21,21 +21,16 @@ Rails.application.routes.draw do
   patch '/user/info' => 'users#location_info'
   resources :welcome, only: [:home]
 
-  resources :users do
-    resources :events, only: [:show, :index]
+  resources :events do 
+    resources :statements, only: [:show, :index]
   end  
-  
+
   resources :statements
 
   resources :comments
 
   resources :categories
-
-  resources :events
   
- 
-  
-
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
