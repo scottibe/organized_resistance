@@ -1,4 +1,11 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
+
 <h1>Event</h1>
+
 <ul>
   <li><b>Title:</b>  <%= @event.title %></li> 
   <li><b>Creator:</b>  <%= link_to @event.creator.name, user_path(@event.creator) %></li>   

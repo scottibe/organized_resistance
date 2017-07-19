@@ -30,7 +30,4 @@ class Statement < ActiveRecord::Base
     end  
   end  
 
-
-
-
 end

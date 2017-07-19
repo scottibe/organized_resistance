@@ -1,9 +1,13 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
+
 <h1>Login</h1>
 
 <div class-"field">
-  <% if flash[:alert] %>
-    <p id="notice"><%= flash[:alert] %>
-  <% end %>  
+    
   <%= form_tag '/login' do %>
     Email: <%= text_field_tag :email %>
     Password: <%= password_field_tag :password %>

@@ -38,8 +38,6 @@
     <% end %><br>
   </ul><br>
 
-  <%= link_to "Create Statement", new_statement_path %>
-
 <% else %>  
   <h2>Events Created by <%= @user.name %>:</h2>
   <ul>
@@ -51,7 +49,7 @@
   <h2>Statements by <%= @user.name %>:</h2>
   <ul>
     <% @user.statements.each do |statement| %>
-      <li><%= link_to statement.headline, user_statement_path(@user, statement) %></li>
+      <li><%= link_to statement.headline, user_statements_path(@user) %></li>
     <% end %>  
   </ul>
 

@@ -7,24 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
  
-50.times do
-  User.create(
-    email: Faker::Internet.email,
-    password: Faker::Internet.password,
-    password_digest: Faker::Internet.password,
-    name: Faker::Name.first_name,
-    city: Faker::Address.city,
-    state: Faker::Address.state,
-    party_affiliation: Faker::GameOfThrones.character
-    ) 
-end
+# 50.times do
+#   User.create(
+#     email: Faker::Internet.email,
+#     password: Faker::Internet.password,
+#     password_digest: Faker::Internet.password,
+#     name: Faker::Name.first_name,
+#     city: Faker::Address.city,
+#     state: Faker::Address.state,
+#     party_affiliation: Faker::GameOfThrones.character
+#     ) 
+# end
      
-50.times do 
-  Event.create(
-    title: Faker::StarWars.character,
-    description: Faker::Lorem.paragraph,
-    date: Faker::Date.forward(30),
-    time: Faker::Number.between(1, 12),
-    location_name: Faker::StarWars.planet
-    )
-end 
+# 50.times do 
+#   Event.create(
+#     title: Faker::StarWars.character,
+#     description: Faker::Lorem.paragraph,
+#     date: Faker::Date.forward(30),
+#     time: Faker::Number.between(1, 12),
+#     location_name: Faker::StarWars.planet
+#     )
+# end 

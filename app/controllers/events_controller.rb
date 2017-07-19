@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  #before_action :require_login  #,  except: [:index]
  
   def index
     @past_events = Event.past_events
@@ -12,8 +11,9 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.created_events.build(event_params)
-    if @event.save!
+    if @event.save
       redirect_to event_path(@event)
+      flash[:success] = "Event Created Successfully"
     else 
       render 'new'
     end    
