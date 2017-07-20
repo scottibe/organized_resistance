@@ -1,13 +1,11 @@
-<h1>Editing <%= @statement.headline %></h1>
-
-<%= form_for @statement  do |f| %>
-  <%= f.label :headline %>
-  <%= f.text_field :headline %><br>
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <br />
-
-  <%= f.submit %>
+<% if logged_in? %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Edit Statement</h1>
+      <h3><%= @statement.headline %></h3>
+    </div> 
+  </div>    
+  <%= render partial: 'form', locals: { statement: @statement } %>
+<% else %>  
+  You must be signed in to view this page
 <% end %>

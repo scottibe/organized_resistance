@@ -3,9 +3,9 @@ class Event < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
   has_many :event_attendees
   has_many :attendees, through: :event_attendees
-  has_one :statement 
+  has_many :statements 
 
-  accepts_nested_attributes_for :statement
+  accepts_nested_attributes_for :statements 
 
   validates_presence_of :title, :description, :date, :time, :street_address, :city, :state
 

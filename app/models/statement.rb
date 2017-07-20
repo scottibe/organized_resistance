@@ -1,7 +1,7 @@
 class Statement < ActiveRecord::Base
 
   belongs_to :user
-  has_one :event
+  belongs_to :event
   has_many :comments
   has_many :statement_categories
   has_many :categories, through: :statement_categories

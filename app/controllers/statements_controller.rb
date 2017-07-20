@@ -19,8 +19,7 @@ class StatementsController < ApplicationController
   end
   
   def create 
-    @statement = Statement.new(statement_params)
-    @statement.user = current_user
+    @statement = current_user.statements.build(statement_params) 
     if @statement.save
       redirect_to statement_path(@statement)
     else 

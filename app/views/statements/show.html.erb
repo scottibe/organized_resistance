@@ -13,8 +13,7 @@
             <h2 class="blog-post-title"><%= @statement.headline%></h2>
             <p class="blog-post-meta"><%=@statement.created_at.strftime("%m-%d-%Y") %> by <%= display_user(@statement) %></p>
             <p><%= @statement.content %></p>
-
-          <% if current_user == @user %>
+          <% if current_user == @statement.user %>
             <%= link_to "Edit Statement", edit_statement_path(@statement) %><br>
           <% end %><br>
 
@@ -38,11 +37,12 @@
   <p><%= f.submit %></p>
 <% end %>
 
-<ul class="comments">
+
+<div class="comments">
   <% @statement.comments.each do |comment| %>
     <li><%= comment.user_name %> Says:</li>
       <li><%= comment.content %></li><br>
   <% end %>  
-</ul>
+</div>
 
 <%= link_to "All Statements", statements_path %>
