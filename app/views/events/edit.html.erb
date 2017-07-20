@@ -1,4 +1,8 @@
-<% if current_user.id == @event.creator.id %>
-  <h2>Edit Your Event</h2>
-  <%= render partial: "form", locals: { event: @event } %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if current_user.id == @event.creator.id %>
+    <h2>Edit Your Event</h2>
+  </div> 
+</div>    
+    <%= render partial: "form", locals: { event: @event } %>
 <% end %>  
