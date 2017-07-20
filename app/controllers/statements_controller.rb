@@ -5,7 +5,8 @@ class StatementsController < ApplicationController
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
       if @user.nil?
-        redirect_to users_path, alert: "Author not found"
+        redirect_to users_path
+        flash[:alert] = "User not found"
       else 
         @statements = @user.statements
       end     
@@ -33,7 +34,8 @@ class StatementsController < ApplicationController
       @statement = @user.statements.find_by(id: params[:id])
       @comment = Comment.new(statement_id: params[:statement_id])
       if @statement.nil?
-        redirect_to user_statements_path(@user), alert: "Statement not found"
+        redirect_to user_statements_path(@user)
+        flash[:alert] = "Statement not found"
       end 
     else 
       @statement = Statement.find(params[:id])     

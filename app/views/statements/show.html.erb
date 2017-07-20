@@ -26,15 +26,12 @@
   <%= f.hidden_field :statement_id, value: @statement.id %>
 
   <div class="form-group">
-    <div class="control-label col-sm-2">
-      <%= f.label :comment %>
-    </div>
-    
+
     <div class="col-sm-8">
-      <%= f.text_area :content, rows: 3, class: "form-control", placeholder: "Please enter a comment", autofocus: true %>
+      <%= f.text_area :content, rows: 3, class: "form-control", placeholder: "Enter comment here", autofocus: true %>
     </div>
   </div>    
-  <p><%= f.submit %></p>
+  <p><%= f.submit class: "btn btn-primary" %></p>
 <% end %>
 
 

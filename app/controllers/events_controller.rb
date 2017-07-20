@@ -1,8 +1,18 @@
 class EventsController < ApplicationController
  
   def index
-    @past_events = Event.past_events
-    @future_events = Event.future_events
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      if @user.nil?
+        redirect_to users_path
+        flash[:alert] = "User not found"
+      else
+        @events = @user.created_events
+      end
+    else      
+      @past_events = Event.past_events
+      @future_events = Event.future_events
+    end  
   end  
 
   def new
@@ -20,8 +30,17 @@ class EventsController < ApplicationController
   end
     
   def show
-    @event = Event.find(params[:id])
-    @attending = current_user.attending_events
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @event = @user.created_events.find_by(id: params[:id])
+      if @event.nil?
+        redirect_to user_events_path(@user)
+        flash[:alert] = "Event not found"
+      end  
+    else  
+      @event = Event.find(params[:id])
+      @attending = current_user.attending_events
+    end  
   end
 
   def update

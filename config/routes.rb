@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   patch '/user/info' => 'users#location_info'
   resources :welcome, only: [:home]
 
-  resources :events do 
-    resources :statements, only: [:show, :index]
+  resources :users do 
+    resources :events, only: [:show, :index]
   end  
 
   resources :statements
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :categories
+
+  resources :events
   
 end
 
