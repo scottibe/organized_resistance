@@ -19,12 +19,13 @@
     <%= f.text_area :content, class: "form-control", rows: "20", placeholder: "Write statement here" %>
 
   <h4>Categories</h4>
-  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-  <p>Or Create a New Category</p>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
   <p>
+  <ul>
     <%= f.fields_for :categories, @statement.categories.build do |ff| %>
       <%= ff.text_field :name, allow_blank: false %>
     <% end %>  
+  </ul>  
   </p>  
   
   <div class="actions">

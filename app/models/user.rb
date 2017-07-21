@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :attending_events, through: :event_attendees, source: :event
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
   has_many :comments
-  has_many :news_articles
   has_many :statements
 
   before_save {self.email = email.downcase }

@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id 
-    flash[:success] = "You Have Logged Out, Goodbye" 
+    flash.now[:notice] = "You Have Logged Out, Goodbye" 
     redirect_to login_path
   end   
 
