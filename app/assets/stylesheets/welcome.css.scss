@@ -1,0 +1,27 @@
+@import "bourbon";
+
+html,body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  background: #222;
+  color: #red
+}
+
+h1,h2 {
+  font-weight: 200;
+  margin: 0.4em 0;
+}
+
+h1 {
+  color: red;
+}
+
+p {
+  color: #888;
+}
+
+h1 { font-size: 3.5em; }
+h2 {
+  color: #888;
+  font-size: 2em;
+}

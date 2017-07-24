@@ -1,14 +1,31 @@
+<h2>Organize Against Donald Trump</h2>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="  stylesheet" type="text/css" />
+  <%= stylesheet_link_tag "welcome" %>
+
+<h1>
+  <span
+     class="txt-rotate"
+     data-period="2000"
+     data-rotate='[ "RESIST. TRUMP. EVERYWHERE" ]'></span>
+</h1>
+<h2>Organized Resistance.</h2>
+  <p>Organize local events and become part of the resistance. Gather friends and neighbors to amplify your voice and make it known that none of this is okay. Write an article(statement) about an event or the latest Trump outrage. Make your voice heard even if you can't attend an event. </p>
+
 <body class="root-body">
-  <h1>Organized Resistance</h1>
 
-  <tr>
-    <ul>
-      <h4><li><%= link_to "View All Events", events_path %></li>
-      <li><%= link_to "View All Statements", statements_path %>
-      <li><%= link_to "Create an event", new_event_path %></li>
-      <li><%= link_to "Write a statement", new_statement_path %></li>
-    </ul>  
+    
+      <div style="float:left;">
+        <%= button_to "View All Events", events_path, class: 'btn-group', method: 'get', action: '/events' %>
+      </div>  
+      <div style="float:left;">
+        <%= button_to "View All Statements", statements_path, class: 'btn-group', method: 'get', action: '/statements' %>
+      </div>
+      <div style="float:left;">  
+        <%= button_to "Create an event", new_event_path, class: 'btn-group', method: 'get', action: '/events/new' %>
+      </div>
+      <div style="float:left;">  
+        <%= button_to "Write a statement", new_statement_path, class: 'btn-group', method: 'get', action: '/statements/new' %>    
+      </div>    
 
-  
-</body>
+</body><br><br>
 

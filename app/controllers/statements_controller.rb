@@ -3,14 +3,10 @@ class StatementsController < ApplicationController
 
   def index
     if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      if @user.nil?
-        redirect_to users_path
-        flash[:alert] = "User not found"
-      else 
-        @statements = @user.statements
-      end     
-    else 
+      @statements = User.find_by(id: params[:user_id]).statements
+    elsif params[:event_id]
+      @statements = Event.find_by(id: params[:event_id]).statements
+    else
       @statements = Statement.all
     end    
   end  
@@ -33,10 +29,10 @@ class StatementsController < ApplicationController
       @user = User.find_by(id: params[:user_id])
       @statement = @user.statements.find_by(id: params[:id])
       @comment = Comment.new(statement: params[:statement_id])
-      if @statement.nil?
-        redirect_to user_statements_path(@user)
-        flash[:alert] = "Statement not found"
-      end 
+    elsif params[:event_id]   
+      @statement = Statement.find_by(id: params[:id])
+      @statement.event = Event.find(params[:id])
+      @comment = Comment.new(statement: params[:statement_id])
     else 
       @statement = Statement.find(params[:id])     
       @comment = Comment.new(statement: params[:statement_id])
@@ -59,7 +55,7 @@ class StatementsController < ApplicationController
 private 
 
   def statement_params
-    params.require(:statement).permit(:content, :headline, :user_name, category_ids: [], categories_attributes: [:name])
+    params.require(:statement).permit(:event_id, :content, :headline, :user_name, category_ids: [], categories_attributes: [:name])
   end     
 
 end

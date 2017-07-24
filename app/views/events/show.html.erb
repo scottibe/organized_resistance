@@ -11,11 +11,11 @@
   <li><b>Attendees:</b> <%= @event.attendees.count %></li><br>
 
   <% if current_user.id == @event.creator.id %>
-    <%= link_to "Edit event details", edit_event_path(@event) %><br> 
-    <%= link_to "Create Statement", new_statement_path %> 
+    <%= link_to "Edit event details", edit_event_path(@event) %><br>  
   <% else %>
     <%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %><br>
-  <% end %><br>
+    <%= link_to "Create Statement For This Event", new_statement_path %>
+  <% end %><br><br>
 
   <% if @event.attending? %>
     <p>You have signed up for this event</p> 
