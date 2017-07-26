@@ -1,8 +1,15 @@
-<h1>Statements</h1>
-<ul>
-  <% @statements.each do |statement| %>
-    <li>Author: <%= display_user(statement) %></li>
-    <li>Created On: <%= statement.created_at.strftime("%m-%d-%Y") %>
-    <li><%= link_to statement.headline, statement_path(statement) %></li><br>
-  <% end %>
-</ul>
+<div class="date-events">
+  All Statements
+</div>
+
+<div class="container">
+  <div class="col-md-8">
+    <ul class="list-group">
+      <% @statements.each do |statement| %>
+        <li><p>Author: <%= display_user(statement) %></p></li>
+        <li><p>Created On: <%= statement.created_at.strftime("%m-%d-%Y") %></p></li>
+        <li><p><%= link_to statement.headline, statement_path(statement) %></p></li><br><br>
+      <% end %>
+    </ul>
+  </div>
+</div>  

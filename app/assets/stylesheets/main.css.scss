@@ -6,6 +6,14 @@ body {
   background-color: WhiteSmoke;
 }
 
+.navbar-brand {
+  color: DeepSkyblue !important;
+}
+
+.nav.navbar-nav li a {
+  color: DeepSkyblue;
+}
+
 .btn-group:hover {
   background-color: DimGray;
   color: MistyRose;
@@ -14,6 +22,50 @@ body {
   border-radius: 20px;
   box-shadow: 7px 7px 5px Black;
   margin: 15px
+}
+
+.cats-field {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.attend p {
+  color: FireBrick;
+}
+
+.title li p {
+  font-size: 32px;
+  color: DeepSkyBlue;
+}
+
+.checkbox {
+  display: inline;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+}
+
+.checkbox label {
+  display: inline;
+  padding-left: 0px;
+  text-indent: -15px;
+  
+}
+
+.new-event h2 {
+  color: Red;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+label {
+  color: DeepSkyBlue;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 7px;
 }
 
 .navbar {
@@ -65,17 +117,16 @@ h2 {
 
 .date-events {
   margin: 10px 0;
-  color: Red;
+  color: SteelBlue;
   font-size: 36px;
-}
-
-label {
-  color: silver;
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-style:double;
 }
 
 a,
 .link {
-  color: SkyBlue;
+  color: DeepSkyBlue;
   font-weight: 500;
   cursor: pointer;
   text-decoration: underline;
@@ -84,7 +135,7 @@ a,
 
 a:hover,
 .link:hover {
-  color: BurlyWood;
+  color: LightBlue;
   text-decoration: underline;
 }
 

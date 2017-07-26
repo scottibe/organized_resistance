@@ -7,7 +7,7 @@ class StatementsController < ApplicationController
     elsif params[:event_id]
       @statements = Event.find_by(id: params[:event_id]).statements
     else
-      @statements = Statement.all
+      @statements = Statement.all 
     end    
   end  
 

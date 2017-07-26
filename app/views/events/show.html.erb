@@ -1,25 +1,32 @@
-<h1>Event</h1>
+<div class="new-event">
+  <h2>Event</h2>
+</div> <br> 
 
 <ul>
-  <li><b>Title:</b>  <%= @event.title %></li> 
-  <li><b>Creator:</b>  <%= link_to @event.creator.name, user_events_path(@event.creator) %></li>   
-  <li><b>Description:</b>  <%= @event.description %></li> 
-  <li><b>Location </b>  <%= @event.location_name %></li>
-  <li><b>Address:</b>  <%= @event.street_address %></li>
-  <li><b>City:</b>  <%= @event.city %></li> 
-  <li><b>State:</b>  <%= @event.state %></li>  
-  <li><b>Attendees:</b> <%= @event.attendees.count %></li><br>
+  <div class="title">
+    <li><p>Title: <%= @event.title %></p></li>
+  </div>
+  <li><p>Creator: <%= link_to @event.creator.name, user_events_path(@event.creator)%></p></li>   
+  <li><p>Description:  <%= @event.description %></p></li> 
+  <li><p>Location:  <%= @event.location_name %></p></li>
+  <li><p>Address:  <%= @event.street_address %></p></li>
+  <li><p>City:  <%= @event.city %></p></li> 
+  <li><p>State:  <%= @event.state %></p></li>  
+  <li><p>Attendees:</b> <%= @event.attendees.count %></p></li>
+</ul> <br>
 
   <% if current_user.id == @event.creator.id %>
     <%= link_to "Edit event details", edit_event_path(@event) %><br>  
   <% else %>
     <%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %><br>
     <%= link_to "Create Statement For This Event", new_statement_path %>
-  <% end %><br><br>
+  <% end %><br>
 
+<div class="attend">
   <% if @event.attending? %>
     <p>You have signed up for this event</p> 
   <% end %>
+</div>  
 
 
 
