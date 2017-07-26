@@ -1,8 +1,8 @@
 <% if logged_in? %>
-  <div class="row">
+  <div class="new-event">
     <div class="col-md-6 col-md-offset-3">
-      <h1>Edit Statement</h1>
-      <h3><%= @statement.headline %></h3>
+      <h2>Edit Statement</h2>
+      <h2><%= @statement.headline %></h2>
     </div> 
   </div>    
   <%= render partial: 'form', locals: { statement: @statement } %>

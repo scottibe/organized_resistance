@@ -1,11 +1,8 @@
-<div class="blog-header">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h1 class="blog-title">Resistance Statement</h1>
-    </div>
+<div class="new-event">  
+  <div class="col-md-8 col-md-offset-2">
+  <h2>Resistance Statement</h2>
   </div>
 </div>
-  
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -36,10 +33,11 @@
 
 
 <div class="comments">
-  <% @statement.comments.each do |comment| %>
-    <li><%= comment.user_name %> Says:</li>
-      <li><%= comment.content %></li><br>
-  <% end %>  
+  <ul>
+    <% @statement.comments.each do |comment| %>
+      <li><p><b><%= comment.user_name %> Says:</b> <%= comment.content %></p></li>
+    <% end %>  
+  </ul>  
 </div>
 
 <%= link_to "All Statements", statements_path %>

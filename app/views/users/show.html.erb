@@ -1,57 +1,61 @@
-<!-- <p id="notice"><%= notice %></p> -->
-<ul>
-  <li>Name: <%= @user.name %></li>
-  <li>Party Affiliation: <%= @user.party_affiliation %></li>
-  <li>City: <%= @user.city %></li> 
-  <li>State: <%= @user.state %></li>
-</ul><br>
+<div class="profile">
+  <h2><%= @user.name %>'s Profile</h2>
+</div>  
+  
+
+  <ul>
+    <li><p>Party Affiliation: <%= @user.party_affiliation %></p></li>
+    <li><p>City: <%= @user.city %></p></li> 
+    <li><p>State: <%= @user.state %></p></li>
+  </ul>
 
 <% if current_user.id == @user.id %>
   
-  <h4>Events you have signed up for:</h4>
+  <div class="users">
+    <h2>Events you have signed up for:</h2>  
 
-  <ul>
-    <% @user.attending_events.uniq.each do |event| %>
-      <li><%= link_to event.title, event_path(event) %></li>
-    <% end %>  
-  </ul><br>
+    <ul>
+      <% @user.attending_events.uniq.each do |event| %>
+        <li><%= link_to event.title, event_path(event) %></li>
+      <% end %>  
+    </ul><br>
 
-   <h4>Your created events:</h4>
-  <ul>
-    <% @user.created_events.each do |e| %>
-      <li><%= link_to e.title, event_path(e) %></li>
-    <% end %>  
-  </ul><br>
+     <h2>Your created events:</h2>
+    <ul>
+      <% @user.created_events.each do |e| %>
+        <li><%= link_to e.title, event_path(e) %></li>
+      <% end %>  
+    </ul><br>
 
-  <h4>Your statements:</h4>
-  <ul>
-    <% @user.statements.each do |statement| %>
-      <li><%= link_to statement.headline, user_statement_path(@user, statement) %></li>
-    <% end %>  
-  </ul><br>
+    <h2>Your statements:</h2>
+    <ul>
+      <% @user.statements.each do |statement| %>
+        <li><%= link_to statement.headline, user_statement_path(@user, statement) %></li>
+      <% end %>  
+    </ul><br>
 
-  <h4>Events in your state:</h4>
-  <ul>
-    <% @events.each do |event| %>
-      <li><%= link_to event.title, event_path(event) %></li>
-    <% end %><br>
-  </ul><br>
+    <h2>Events in your state:</h2>
+    <ul>
+      <% @events.each do |event| %>
+        <li><%= link_to event.title, event_path(event) %></li>
+      <% end %><br>
+    </ul><br>
 
-<% else %>  
-  <h2>Events Created by <%= @user.name %>:</h2>
-  <ul>
-    <% @user.created_events.each do |e| %>
-      <li><%= link_to e.title, event_path(e) %></li>
-    <% end %>  
-  </ul>
+  <% else %>  
+    <h2>Events Created by <%= @user.name %>:</h2>
+    <ul>
+      <% @user.created_events.each do |e| %>
+        <li><%= link_to e.title, user_event_path(@user, e) %></li>
+      <% end %>  
+    </ul>
 
-  <h2>Statements by <%= @user.name %>:</h2>
-  <ul>
-    <% @user.statements.each do |statement| %>
-      <li><%= link_to statement.headline, user_statements_path(@user) %></li>
-    <% end %>  
-  </ul>
-
+    <h2>Statements by <%= @user.name %>:</h2>
+    <ul>
+      <% @user.statements.each do |statement| %>
+        <li><%= link_to statement.headline, user_statement_path(@user, statement) %></li>
+      <% end %>  
+    </ul>
+  </div>
 <% end %>
 
 

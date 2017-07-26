@@ -3,14 +3,15 @@
     <%= value %>
   </div>
 <% end %>
+<div class="new-user">
+  <h2>Login</h2>
+</div>  
 
-<h1>Login</h1>
-
-<div class-"field">
+<div class="field">
     
   <%= form_tag '/login' do %>
-    Email: <%= text_field_tag :email %>
-    Password: <%= password_field_tag :password %>
+    <p>Email: <%= text_field_tag :email %>
+    Password: <%= password_field_tag :password %></p><br>
     <%= submit_tag "Login", class: "btn btn-primary" %>
   <% end %> <br>
   

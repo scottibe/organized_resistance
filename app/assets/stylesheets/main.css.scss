@@ -14,6 +14,17 @@ body {
   color: DeepSkyblue;
 }
 
+.new-event.blog-title h2 {
+  color: purple;
+}
+
+.form-control {
+  background-color: AliceBlue;
+  color: DarkSlateGrey;
+  border-style: outset;
+  border-color: Aqua;
+}
+
 .btn-group:hover {
   background-color: DimGray;
   color: MistyRose;
@@ -38,6 +49,41 @@ body {
   color: DeepSkyBlue;
 }
 
+ul > li
+{
+  color: DodgerBlue;
+}
+
+.profile h2 {
+  color: LightCyan;
+}
+
+.profile-text li p {
+  color: AntiqueWhite;
+}
+
+li p {
+  color: LightGray;
+}
+
+.users h2 {
+ font-size: 28px;
+ color: LightCyan;
+}
+
+.users li a {
+  color: LightGray;
+  font-weight: 300;
+}
+
+.field p {
+  color: SkyBlue;
+}
+
+.users li a:hover {
+  color: ForestGreen;
+}
+
 .checkbox {
   display: inline;
   width: 25px;
@@ -59,6 +105,13 @@ body {
   color: Red;
   font-weight: 500;
   margin-bottom: 2px;
+}
+
+.new-user h2 {
+  color: Lime;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 label {
@@ -211,6 +264,15 @@ header nav a:not(:last-child) {
   content: '✔';
   position: absolute;
   left: -20px;
+}
+
+.comments li p {
+  color: Gray;
+}
+
+.comments li p b {
+  text-decoration: underline;
+  font-style: italic;
 }
 
 .app-lists {

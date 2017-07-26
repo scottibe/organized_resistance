@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :set_current_user
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+
+  def render_404
+    render :template => "errors/error_404", :status => 404
+  end
 
 
 

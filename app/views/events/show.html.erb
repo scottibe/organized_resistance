@@ -18,8 +18,7 @@
   <% if current_user.id == @event.creator.id %>
     <%= link_to "Edit event details", edit_event_path(@event) %><br>  
   <% else %>
-    <%= button_to 'Attend This Event', event_attendees_path(event_id: @event) %><br>
-    <%= link_to "Create Statement For This Event", new_statement_path %>
+    <%= button_to 'Attend This Event', event_attendees_path(event_id: @event), class: "btn-group" %>
   <% end %><br>
 
 <div class="attend">

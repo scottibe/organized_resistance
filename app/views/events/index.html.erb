@@ -29,7 +29,7 @@
       <li><p>Title <%= link_to event.title, event_path(event) %></p></li> 
       <li><p>Date: <%= event.date %></p></li>
       <li><p>Description <%= event.description %></p></li>
-      <li><p>Creator: <%= event.creator.name %></p></li>
+      <li><p>Creator: <%= link_to event.creator.name, user_event_path(event.creator, event) %></p></li>
     <% end %>  
   </ul> 
 <% end %>
