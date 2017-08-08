@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
   end   
 
   def self.in_state_events
-    self.where("state = ?", User.current.state)
+    self.where("state = ?", User.current.state) if User.current
   end
 
   def attending?

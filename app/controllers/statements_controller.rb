@@ -1,5 +1,4 @@
 class StatementsController < ApplicationController
-  # before_action :require_login
 
   def index
     if params[:user_id]
@@ -50,6 +49,13 @@ class StatementsController < ApplicationController
     else 
       render 'edit'  
     end
+  end  
+
+  def destroy
+    @statement = Statement.find(params[:id])
+    @statement.destroy
+
+    redirect_to user_path(current_user)
   end  
 
 private 

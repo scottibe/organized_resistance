@@ -40,4 +40,8 @@
   </ul>  
 </div>
 
-<%= link_to "All Statements", statements_path %>
+<%= link_to "All Statements", statements_path %><br>
+
+<%= link_to "Delete statement", statement_path(@statement),
+                                              method: :delete,
+                                              data: { confirm: 'Are you sure?' } %>

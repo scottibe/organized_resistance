@@ -6,6 +6,14 @@ body {
   background-color: WhiteSmoke;
 }
 
+.users h4  {
+  color: red;
+}
+
+.users h3  {
+  color: silver;
+}
+
 .navbar-brand {
   color: DeepSkyblue !important;
 }
@@ -23,6 +31,10 @@ body {
   color: DarkSlateGrey;
   border-style: outset;
   border-color: Aqua;
+}
+
+.container {
+  color: DeepSkyblue;
 }
 
 .btn-group:hover {

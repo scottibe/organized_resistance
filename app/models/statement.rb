@@ -6,7 +6,7 @@ class Statement < ActiveRecord::Base
   has_many :statement_categories
   has_many :categories, through: :statement_categories
 
-  accepts_nested_attributes_for :categories
+  # accepts_nested_attributes_for :categories
 
   validates_presence_of :headline, :content
 
@@ -26,7 +26,7 @@ class Statement < ActiveRecord::Base
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
       category = Category.find_or_create_by(category_attribute)
-      self.categories << category
+      self.statement_categories.build(category: category)
     end  
   end    
 

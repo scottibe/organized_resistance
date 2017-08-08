@@ -1,45 +1,57 @@
-<div class="profile">
-  <h2><%= @user.name %>'s Profile</h2>
-</div>  
+<% if logged_in? %>
+  <div class="profile">
+    <h2><%= @user.name %>'s Profile</h2>
+  </div>  
   
-
   <ul>
     <li><p>Party Affiliation: <%= @user.party_affiliation %></p></li>
     <li><p>City: <%= @user.city %></p></li> 
     <li><p>State: <%= @user.state %></p></li>
   </ul>
 
-<% if current_user.id == @user.id %>
+  <% if current_user.id == @user.id %>
   
-  <div class="users">
-    <h2>Events you have signed up for:</h2>  
+    <div class="users">
+      <h2>Events you have signed up for:</h2>  
+  
+        <ul>
+          <% @user.attending_events.uniq.each do |event| %>
+            <li><%= link_to event.title, event_path(event) %></li>
+          <% end %>  
+        </ul><br>
+  
+        <h2>Your created events:</h2>
+        <ul>
+        <% @user.created_events.each do |e| %>
+          <h3><li><%= link_to e.title, event_path(e) %></li></h3>
 
-    <ul>
-      <% @user.attending_events.uniq.each do |event| %>
-        <li><%= link_to event.title, event_path(event) %></li>
-      <% end %>  
-    </ul><br>
+          <h4>Attending:</h4>
+          
+          <% e.attendees.uniq.each do |attendee| %>
+            <li><%= attendee.name %> - <%= attendee.email %></li>
 
-     <h2>Your created events:</h2>
-    <ul>
-      <% @user.created_events.each do |e| %>
-        <li><%= link_to e.title, event_path(e) %></li>
-      <% end %>  
-    </ul><br>
+          <% end %>  
+        <% end %>  
+      </ul><br>
+  
+        <h2>Your statements:</h2>
+        <ul>
+        <% @user.statements.each do |statement| %>
+          <li><%= link_to statement.headline, user_statement_path(@user, statement) %></li>
+        <% end %>  
+      </ul><br>
 
-    <h2>Your statements:</h2>
-    <ul>
-      <% @user.statements.each do |statement| %>
-        <li><%= link_to statement.headline, user_statement_path(@user, statement) %></li>
-      <% end %>  
-    </ul><br>
+      <h2>Events in your state:</h2>
+      <ul>
+        <% @events.each do |event| %>
+          <li><%= link_to event.title, event_path(event) %></li>
+        <% end %><br>
+      </ul>
 
-    <h2>Events in your state:</h2>
-    <ul>
-      <% @events.each do |event| %>
-        <li><%= link_to event.title, event_path(event) %></li>
-      <% end %><br>
-    </ul><br>
+      <%= link_to "Update account", edit_user_path(@user) %><br>
+      <%= link_to "Delete your account", user_path(@user),
+                                              method: :delete,
+                                              data: { confirm: 'Are you sure?' } %>
 
   <% else %>  
     <h2>Events Created by <%= @user.name %>:</h2>
@@ -55,7 +67,10 @@
         <li><%= link_to statement.headline, user_statement_path(@user, statement) %></li>
       <% end %>  
     </ul>
-  </div>
+    </div>
+  <% end %>
+<% else %>  
+  <p>You must be signed in to view this page</p>
 <% end %>
 
 

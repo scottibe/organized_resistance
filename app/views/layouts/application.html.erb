@@ -11,22 +11,20 @@
 
     <%= render 'partials/navbar' %>
     
-    <div class="container">
-
+  <div class="container">
     <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
-        <%= value %>
-      </div>
+      <%= value %>
     <% end %>
+  
 
       <%= yield %>
-      
+     
       <hr>
   
       <%= render 'partials/footer' %>
       
     </div> <!-- /container -->
-
+  </div>
 
 </body>
 </html>

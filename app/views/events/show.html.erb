@@ -12,11 +12,14 @@
   <li><p>Address:  <%= @event.street_address %></p></li>
   <li><p>City:  <%= @event.city %></p></li> 
   <li><p>State:  <%= @event.state %></p></li>  
-  <li><p>Attendees:</b> <%= @event.attendees.count %></p></li>
+  <li><p>Attendees:</b> <%= @event.attendees.uniq.count %></p></li>
 </ul> <br>
 
   <% if current_user.id == @event.creator.id %>
     <%= link_to "Edit event details", edit_event_path(@event) %><br>  
+    <%= link_to "Delete this event", event_path(@event),
+                                              method: :delete,
+                                              data: { confirm: 'Are you sure?' } %>
   <% else %>
     <%= button_to 'Attend This Event', event_attendees_path(event_id: @event), class: "btn-group" %>
   <% end %><br>
@@ -26,9 +29,3 @@
     <p>You have signed up for this event</p> 
   <% end %>
 </div>  
-
-
-
-
-
-
