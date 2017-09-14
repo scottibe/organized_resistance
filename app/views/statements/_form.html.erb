@@ -21,7 +21,7 @@
     <h2>Categories</h2>
   </div>  
 
-  <div class="checkbox">
+  <div class="checkbox-inline">
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
   </div>
 

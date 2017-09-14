@@ -25,7 +25,9 @@ class Statement < ActiveRecord::Base
 
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
-      category = Category.find_or_create_by(category_attribute)
+      if category_attribute["name"] != ""
+        category = Category.find_or_create_by(category_attribute) 
+      end  
       self.statement_categories.build(category: category)
     end  
   end    

@@ -106,11 +106,17 @@ li p {
   position: relative;
 }
 
-.checkbox label {
+.checkbox-inline label {
   display: inline;
   padding-left: 0px;
+  padding-right: 37px;
   text-indent: -15px;
   
+}
+
+.categories a {
+  padding-right: 15px;
+  padding-left: 7px;
 }
 
 .new-event h2 {

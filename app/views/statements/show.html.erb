@@ -14,10 +14,11 @@
             <%= link_to "Edit Statement", edit_statement_path(@statement) %><br>
           <% end %><br>
 
-
-<p>Categories: <% @statement.categories.collect do |category| %>
-      <%= link_to category.name, category_path(category) %>
-<% end %></p>
+<div class="categories">
+  <p>Categories: <% @statement.categories.collect do |category| %>
+    <%= link_to category.name, category_path(category) %>
+  <% end %></p>
+</div>
 
 <%= form_for(@comment, html: {class: "form-horizontal", role: "form"}) do |f| %>
   <%= f.hidden_field :statement_id, value: @statement.id %>

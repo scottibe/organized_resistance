@@ -33,7 +33,7 @@ class StatementsController < ApplicationController
       @statement.event = Event.find(params[:id])
       @comment = Comment.new(statement: params[:statement_id])
     else 
-      @statement = Statement.find(params[:id])     
+      @statement = Statement.find(params[:id])      
       @comment = Comment.new(statement: params[:statement_id])
     end  
   end  

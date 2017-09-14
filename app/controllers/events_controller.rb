@@ -69,8 +69,8 @@ private
     params.require(:event).permit(:title, :street_address, :location_name, :city, :state, :title, :description, :date, :time, :creator_id, statements_attributes: [:headline, :content])
   end  
 
-  def require_login
-    return head(:forbidden) unless session.include? :user_id
-  end  
+  # def require_login
+  #   return head(:forbidden) unless session.include? :user_id
+  # end  
 
 end
