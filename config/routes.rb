@@ -19,10 +19,6 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :events, only: [:show, :index]
-  end
-
-  resources :events do 
-    resources :statements, only: [:show, :index]
   end  
     
   get '/user/info' => 'users#info'

@@ -3,8 +3,6 @@ class StatementsController < ApplicationController
   def index
     if params[:user_id]
       @statements = User.find_by(id: params[:user_id]).statements
-    elsif params[:event_id]
-      @statements = Event.find_by(id: params[:event_id]).statements
     else
       @statements = Statement.all 
     end    
@@ -27,10 +25,6 @@ class StatementsController < ApplicationController
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
       @statement = @user.statements.find_by(id: params[:id])
-      @comment = Comment.new(statement: params[:statement_id])
-    elsif params[:event_id]   
-      @statement = Statement.find_by(id: params[:id])
-      @statement.event = Event.find(params[:id])
       @comment = Comment.new(statement: params[:statement_id])
     else 
       @statement = Statement.find(params[:id])      
