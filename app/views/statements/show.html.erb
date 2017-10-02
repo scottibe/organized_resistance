@@ -36,6 +36,7 @@
 <div class="comments">
   <ul>
     <% @statement.comments.each do |comment| %>
+      <% binding.pry %>
       <li><p><b><%= comment.user_name %> Says:</b> <%= comment.content %></p></li>
     <% end %>  
   </ul>  
