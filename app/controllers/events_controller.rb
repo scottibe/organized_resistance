@@ -30,18 +30,23 @@ class EventsController < ApplicationController
   end
     
   def show
-    if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      @event = @user.created_events.find_by(id: params[:id])
-      if @event.nil?
-        redirect_to user_events_path(@user)
-        flash[:alert] = "Event not found"
+    if current_user == nil
+      redirect_to login_path
+      flash[:alert] = "You must be signed in to view an event"
+    else    
+      if params[:user_id]
+        @user = User.find_by(id: params[:user_id])
+        @event = @user.created_events.find_by(id: params[:id])
+        if @event.nil?
+          redirect_to user_events_path(@user)
+          flash[:alert] = "Event not found"
+        end  
+      else  
+        @event = Event.find(params[:id])
+        @attending = current_user.attending_events
       end  
-    else  
-      @event = Event.find(params[:id])
-      @attending = current_user.attending_events
-    end  
-  end
+    end
+  end  
 
   def update
     @event = Event.find(params[:id])

@@ -6,7 +6,9 @@
   <div class="title">
     <li><p>Title: <%= @event.title %></p></li>
   </div>
-  <li><p>Creator: <%= link_to @event.creator.name, user_events_path(@event.creator)%></p></li>   
+  <li><p>Creator: <%= link_to @event.creator.name, user_events_path(@event.creator)%></p></li> 
+  <li><p>Date: <%= @event.date.strftime("%B %dth, %C%y") %></p></li>
+  <li><p>Time: <%= @event.time.strftime("%l:%M %p") %></p></li>  
   <li><p>Description:  <%= @event.description %></p></li> 
   <li><p>Location:  <%= @event.location_name %></p></li>
   <li><p>Address:  <%= @event.street_address %></p></li>

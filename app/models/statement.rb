@@ -6,8 +6,6 @@ class Statement < ActiveRecord::Base
   has_many :statement_categories
   has_many :categories, through: :statement_categories
 
-  # accepts_nested_attributes_for :categories
-
   validates_presence_of :headline, :content
 
   def comment_count

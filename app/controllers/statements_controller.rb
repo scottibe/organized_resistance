@@ -13,7 +13,7 @@ class StatementsController < ApplicationController
   end
   
   def create 
-    @statement = current_user.statements.build(statement_params) 
+    @statement = current_user.statements.build(statement_params)
     if @statement.save!
       redirect_to statement_path(@statement)
     else 
@@ -55,7 +55,7 @@ class StatementsController < ApplicationController
 private 
 
   def statement_params
-    params.require(:statement).permit(:event_id, :content, :headline, :user_name, category_ids: [], categories_attributes: [:name])
-  end     
+    params.require(:statement).permit(:content, :headline, :user_name, category_ids: [], categories_attributes: [:name])
+  end   
 
 end

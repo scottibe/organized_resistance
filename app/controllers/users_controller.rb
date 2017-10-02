@@ -47,7 +47,8 @@
     @user = User.find(params[:id])
   end 
   
-  def update   
+  def update  
+    @user = User.find(params[:id]) 
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_path(@user), notice: "User #{@user.name} was successfully updated." }
